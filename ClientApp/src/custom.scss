@@ -1,0 +1,1157 @@
+/* Provide sufficient contrast against white background */
+$green-text: #6BB644;
+$green-background: #6ed647;
+$extra-small: "only screen and (max-width: 576px)";
+$small: "only screen and (min-width: 576px) and (max-width: 768px)";
+$medium: "only screen and (min-width: 768px) and (max-width: 992px)";
+$large: "only screen and (min-width: 992px) and (max-width: 1200px)";
+$extra: "only screen and (min-width: 1600px )";
+
+$handheld: "only screen and (max-width: 992px)";
+$desktop: "only screen and (min-width: 1200px)";
+$mobile: "only screen and (max-width: 768px)";
+
+@mixin device($media) {
+    @if $media == xs {
+        @media #{$extra-small} {
+            @content;
+        }
+    }
+
+    @if $media == small {
+        @media #{$small} {
+            @content;
+        }
+    }
+    @else if $media == medium {
+        @media #{$medium} {
+            @content;
+        }
+    }
+    @else if $media == large {
+        @media #{$large} {
+            @content;
+        }
+    }
+    @else if $media == extra {
+        @media #{$extra} {
+            @content;
+        }
+    }
+
+    @else if $media == handheld {
+        @media #{$handheld} {
+            @content;
+        }
+    }
+
+    @else if $media == desktop {
+        @media #{$desktop} {
+            @content;
+        }
+    }
+
+    @else if $media == mobile {
+        @media #{$mobile} {
+            @content;
+        }
+    }
+}
+
+
+body {
+    font-family: "Helvetica";
+    padding:0 !important;
+}
+
+.loading {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+}
+
+h1 {
+    font-size: calc(1.5em + 0.5vw);
+    font-weight: bold;
+    margin-top: 0.5em;
+
+    /*@include device(large) {
+        font-size: 1.8em;
+    }
+
+    @include device(medium) {
+        font-size: 1.8em;
+    }
+
+    @include device(mobile) {
+        font-size: 1.5em;
+    }*/
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Helvetica";
+}
+
+a {
+    color: #0366d6;
+    font-family: "Helvetica";
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+code {
+    font-family: Helvetica;
+    color: #E01A76;
+}
+
+nav.navbar{
+    padding: 1.5rem 1rem;
+}
+
+.navbar h1 {
+    color: white !important;
+    font-size: 25px;
+    font-weight: bold;
+
+    text-align: center;
+    
+}
+
+.navbar {
+    flex-wrap: wrap;
+    .container {
+        @include device(medium) {
+            max-width: 90%;
+        }
+
+        @include device(handheld) {
+            h1 {
+                font-size: 1em;
+                margin-bottom: 1em;
+            }
+        }
+
+        div {
+            @include device(mobile) {
+                flex: 0 1 auto;
+                margin-bottom: 1em;
+                font-size: 0.7em;
+
+            }
+        }
+    }
+}
+
+.navbar-brand {
+    @include device(small) {
+        flex: 0;
+        margin: 0;
+
+        img {
+            max-height: 32px;
+        }
+    }
+
+    @include device(xs) {
+        flex: 0;
+        margin: 0;
+
+        img {
+            max-height: 32px;
+        }
+    }
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+section {
+    width: 100%;
+
+    @include device(desktop) {
+        margin-bottom: 3rem;
+    }
+}
+
+.stream-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+
+/*    iframe {
+        height: 100%;
+
+        @include device(desktop) {
+            width: 100%;
+            min-height: 36vw;
+        }
+
+        @include device(large) {
+            width: 100%;
+            height: 400px;
+        }
+
+        @include device(medium) {
+            width: 100%;
+            height: 350px;
+        }
+
+        @include device(small) {
+            width: 100%;
+            height: 300px;
+        }
+
+
+        @include device(xs) {
+            width: 100%;
+            height: 250px;
+        }
+    }*/
+}
+
+.icon-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 3em;
+    align-items: center;
+    border-radius: 20px;
+    text-align: center;
+    padding: 1rem 2rem;
+    width: 200px;
+    width: fit-content;
+    /*margin-right: 3rem;*/
+    min-height: 6rem;
+
+    h2 {
+        justify-self: flex-end;
+        align-self: center;
+        min-width: 80px;
+
+        @include device(desktop) {
+            font-size: 1em;
+        }
+
+        @include device(medium) {
+            font-size: 1.5em;
+        }
+
+        @include device(mobile) {
+            font-size: 2em;
+        }
+
+        &.red {
+            color: red;
+        }
+    }
+
+    svg {
+        @include device(desktop) {
+            font-size: 1.5em;
+        }
+
+        @include device(mobile) {
+            font-size: 2em;
+        }
+
+        font-weight: 300;
+        justify-self: flex-start;
+
+        &.red {
+            color: red;
+        }
+    }
+}
+
+    .input-group {
+        margin-bottom: 1rem;
+    }
+
+    .user-details-section {
+        /*border: 2px solid $green-text;
+    border-radius: 5px;*/
+        padding: 2rem 0;
+    }
+
+    .user-details {
+        svg {
+            color: $green-background;
+            margin-right: 1em;
+        }
+
+        margin-bottom: 1em;
+
+        button {
+            margin-top: 1em;
+        }
+    }
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 50vh;
+    overflow-y: scroll;
+    overflow-x: auto;
+    padding: 1em;
+    margin: 1em 0;
+    background-color: lighten(grey, 40%);
+
+    .message {
+        max-width: 80%;
+        margin-bottom: .5rem;
+        border-radius: 5px;
+
+        &.me {
+            color: white;
+            background-color: $green-background;
+            align-self: flex-start;
+        }
+
+        &.them {
+            color: white;
+            background-color: dodgerblue;
+            align-self: flex-end;
+        }
+
+        h3 {
+            font-size: .7em;
+            margin: .5em;
+        }
+
+        p {
+            margin: 0 1em 0.5em 1em;
+        }
+    }
+}
+
+    .justify-content-between {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+.customer-list {
+    .list-group-item {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr) auto;
+    }
+}
+
+.connections-list {
+    .list-group-item {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+    .customer {
+        button {
+            margin-left: 1em;
+        }
+    }
+
+    .calling-section {
+        .list-group {
+            svg {
+                color: $green-background;
+                margin-right: 1em;
+            }
+        }
+
+        .icon-container {
+            animation-name: blink-border;
+            animation-duration: 3s;
+            animation-delay: 0;
+            animation-iteration-count: infinite;
+            animation-direction: forward;
+
+            svg {
+                animation-name: blink-color;
+                animation-duration: 3s;
+                animation-delay: 0;
+                animation-iteration-count: infinite;
+                animation-direction: forward;
+            }
+        }
+    }
+
+
+    @keyframes blink-border {
+        0% {
+            border: 2px solid red;
+        }
+
+
+        25% {
+            border: 2px solid $green-text;
+        }
+
+        75% {
+            border: 2px solid red;
+        }
+
+        100% {
+            border: 2px solid red;
+        }
+    }
+
+    @keyframes blink-color {
+        0% {
+            color: red;
+        }
+
+
+        0% {
+            color: red;
+        }
+
+
+        25% {
+            color: $green-background;
+        }
+
+        75% {
+            color: $green-background;
+        }
+
+        100% {
+            color: red;
+        }
+    }
+
+.program {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @include device(extra) {
+        max-height: 550px;
+    }
+
+    @include device(desktop) {
+        max-height: 550px;
+    }
+
+    @include device(large) {
+        max-height: 450px;
+    }
+
+    @include device(mobile) {
+        max-height: 450px;
+    }
+
+    .program-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span {
+            cursor: pointer;
+            color: red;
+        }
+        /*svg {
+            color: red;
+            cursor: pointer;
+        }*/
+    }
+
+    .program-line {
+        display: grid;
+        grid-template-columns: 10ch 1fr 1em;
+        //grid-template-columns: 1fr 1em;
+        grid-gap: 1em;
+        height: 4.5em;
+        background-color: lighten($green-background, 35%);
+        color: grey;
+
+        @include device(desktop) {
+            height: auto;
+        }
+
+        /*&.current {
+            //background-color: $green-background;
+            color: white !important;
+        }*/
+
+        &.finished {
+        }
+
+        .video-icon {
+            cursor: pointer;
+        }
+    }
+
+    .list-group {
+        overflow: scroll;
+        overflow-x: hidden;
+        position: relative;
+        transition: all .5s ease;
+
+        @include device(handheld) {
+            flex: 1 0 4.5em;
+            max-height: 4.5em;
+
+            &.expanded {
+                flex: 1 1 auto;
+                max-height: 70vh;
+            }
+        }
+
+        @include device(large) {
+            flex: 1 0 12em;
+            max-height: 12em;
+
+            &.expanded {
+                flex: 1 1 auto;
+                max-height: 70vh;
+            }
+        }
+
+        @include device(medium) {
+            flex: 1 0 12em;
+            max-height: 12em;
+
+            &.expanded {
+                flex: 1 1 auto;
+                max-height: 70vh;
+            }
+        }
+
+        @include device(desktop) {
+            flex: 1;
+        }
+
+        @include device(large) {
+            flex: 1;
+        }
+    }
+}
+
+
+    .extra-info {
+        height: 100%;
+        margin: 0 2rem;
+
+
+        img {
+            /*width: 100% !important;
+            height: auto !important;*/
+        }
+    }
+
+    .list-group-item {
+        svg {
+            margin-right: 1em;
+        }
+    }
+
+.home-container, .admin-container {
+    //padding: 0 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 1rem;
+}
+
+.admin-container {
+    section {
+        padding: 0 2em;
+    }
+}
+
+
+.home-top {
+    width: calc(100% - 8rem);
+    display: grid;
+    margin-bottom: 2rem;
+
+
+    @include device(desktop) {
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+    }
+
+    @include device(extra) {
+        grid-template-columns: 8fr 2fr;
+        grid-gap: 3rem;
+    }
+
+
+    @include device(medium) {
+        grid-template-columns: 1fr;
+        grid-gap: 2rem;
+    }
+
+    @include device(handheld) {
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .home-top-left {
+        display: grid;
+        grid-gap: 2em;
+        height: fit-content;
+
+        @include device(handheld) {
+            grid-gap: 1em;
+        }
+
+        @include device(large) {
+            margin-bottom: 2rem;
+        }
+
+        .text-box {
+            @include device(mobile) {
+                order: 1;
+            }
+
+            p {
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
+
+
+        .live-stream-container {
+            display: grid;
+            overflow: hidden;
+
+            .stream-heading {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @include device(mobile) {
+                    flex-wrap: wrap;
+                }
+
+                span {
+                    cursor: pointer;
+                    color: red;
+                    background-color: rgba(0,0,0,0.6);
+                    padding: 0.25em 1em;
+                    align-self: flex-end;
+                    margin-bottom: 0.5em;
+                    flex: 0 0 10em;
+                    text-align: center;
+                }
+
+                svg {
+                    color: red;
+                    cursor: pointer;
+                }
+            }
+
+            @include device(desktop) {
+                grid-gap: 3rem;
+                grid-template-columns: 2fr 1fr;
+                /*max-height: 550px;*/
+            }
+
+            @include device(extra) {
+                grid-gap: 3rem;
+                grid-template-columns: 2fr 1fr;
+/*                max-height: 550px;
+*/            }
+
+            @include device(large) {
+                grid-gap: 0;
+                grid-template-columns: 1fr;
+                /*max-height: 450px;*/
+            }
+
+            @include device(mobile) {
+                grid-template-columns: 1fr;
+                //max-height: 450px;
+                grid-gap: 0;
+            }
+        }
+
+        .contact-buttons {
+            font-size: calc(1em + .5vw);
+            /*display: grid;
+            grid-gap: 1em;*/
+            display: grid;
+            grid-template-columns: repeat(4, auto);
+
+            grid-gap: 2rem;
+            .shop-button {
+                width: 30vw;
+                max-width: 400px;
+            }
+            @include device(desktop) {
+                grid-template-columns: auto repeat(3, 1fr);
+
+                h2 {
+                    grid-column: span 3;
+                }
+                .competition-button {
+                    font-size: 0.7em;
+                }
+            }
+
+            @include device(large) {
+                grid-template-columns: repeat(3, 1fr);
+
+                h2 {
+                    grid-column: span 3;
+                }
+
+                .competition-button {
+                    order: 1;
+                    grid-column: span 3;
+                }
+
+                .large-icon-button {
+                    height: 100%;
+                }
+
+                .shop-button {
+                    height: 100%;
+                }
+            }
+
+            @include device(medium) {
+                grid-template-columns: repeat(4, 1fr);
+
+                h2 {
+                    grid-column: span 3;
+                }
+
+                .competition-button {
+                    //grid-column: span 2;
+                }
+                .competition-button {
+                    height: 100%;
+                    order: 1;
+                    grid-column: span 3;
+                    width: 100%;
+                    font-size: 0.8em;
+                }
+                .large-icon-button {
+                    height: 100%;
+                }
+
+                .shop-button {
+                    height: 100%;
+                }
+            }
+
+            @include device(handheld) {
+                grid-template-columns: repeat(2, 1fr);
+
+                h2 {
+                    grid-column: span 2;
+                }
+
+                .competition-button {
+                    grid-column: span 2;
+                }
+                .competition-button {
+                    height: 100%;
+                    order: 1;
+                    grid-column: span 2;
+                    width: 100%;
+                    font-size: 0.8em;
+                }
+                .shop-button {
+                    height: 100%;
+                    grid-column: span 2;
+                }
+
+                .large-icon-button {
+                    height: 100%;
+                }
+            }
+
+
+
+            @include device(xs) {
+                grid-template-columns: 1fr 1fr;
+
+                h2 {
+                    grid-column: span 2;
+                }
+
+                .competition-button {
+                    grid-column: span 2;
+                }
+
+                .shop-button {
+                    grid-column: span 2;
+                }
+
+                .large-icon-button {
+                    font-size: 0.5em;
+                    height: 100%;
+                }
+            }
+
+            .icon-container {
+                width: 100%;
+                grid-gap: 0.5em;
+                padding: 1rem;
+                font-size: .6em;
+
+                svg {
+                    font-size: 2em;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+
+
+
+
+    .home-top-right {
+        margin-bottom: 1rem;
+
+        .info-header {
+            margin: 0 2rem;
+        }
+    }
+}
+
+.large-icon-button {
+    transition: box-shadow .3s ease;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.75);
+
+    h2 {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    svg {
+        transform: rotateY(0deg);
+        transition: all .5s ease;
+    }
+
+
+    &.green {
+        background-color: darken($green-background, 30%) !important;
+    }
+
+    &.red {
+        background-color: darken(red, 30%) !important;
+    }
+
+    &.yellow {
+        background-color: #ffc107 !important;
+        span, svg{
+            color: black;
+        }
+
+    }
+
+    &.orange {
+        background-color: darken(orange, 30%) !important;
+    }
+}
+
+button.large-icon-button, a.large-icon-button, .large-icon-button {
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 8px 8px 8px 0px rgba(0,0,0,0.75);
+
+        svg {
+            transform: rotateY(360deg);
+        }
+    }
+
+    &.disabled {
+        cursor: not-allowed;
+
+
+        &:hover {
+            box-shadow: none !important;
+
+            svg {
+                transform: rotateY(0deg) !important;
+            }
+        }
+    }
+}
+
+div.large-icon-button{
+    cursor: default;
+}
+
+.home-top-row {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr;
+    grid-gap: 3rem;
+}
+
+    .text-box {
+        padding: 2rem;
+        width: 300px;
+        width: fit-content;
+    }
+    /*.competition-button {
+        cursor: pointer;
+
+        h2 {
+            font-size: 1.5em;
+            position: relative;
+            margin-bottom: 1em;
+            width: fit-content;
+            font-weight: bold;
+
+            &:after {
+                content: "";
+                width: 100%;
+                height: 2px;
+                background-color: white;
+                position: absolute;
+                bottom: -.25em;
+                left: 0;
+            }
+        }
+
+        p {
+            font-weight: bold;
+        }
+    }*/
+.contact-method-modal {
+
+
+    @include device(desktop) {
+        width: fit-content;
+        max-width: 90vw;
+    }
+
+    .contact-buttons {
+        display: grid;
+        grid-gap: 1em;
+
+        @include device(desktop) {
+            grid-template-columns: repeat(3, 1fr);
+            width: fit-content;
+        }
+
+        @include device(handheld) {
+            grid-template-columns: 1fr;
+        }
+
+        .icon-container {
+            width: 100%;
+        }
+    }
+}
+
+    .offline-message {
+        li {
+            background-color: inherit;
+            color: inherit;
+
+            a {
+                background-color: inherit;
+                color: inherit;
+            }
+        }
+    }
+
+    .bottom-text {
+        width: 100%;
+
+        .text-box {
+            width: 100%;
+        }
+
+        a {
+            color: $green-background !important;
+        }
+        margin-bottom: 0;
+    }
+
+.status-section {
+    display: flex;
+    justify-content: space-between;
+
+    .large-icon-button {
+        grid-gap: 1em;
+        font-size: 1em;
+        margin-right: 1em;
+
+        &:last-child{
+            margin-right: 0;
+        }
+    }
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+
+    .clock {
+        margin: 200px 0;
+        background-color: rgba(white, 0.7);
+        text-align: center;
+        width: 100%;
+
+
+        h1 {
+            @include device(handheld) {
+                font-size: 18px;
+            }
+        }
+
+       
+    }
+
+    span {
+        font-size: 40px;
+        font-weight: bold;
+
+        @include device(handheld) {
+            font-size: 28px;
+        }
+    }
+}
+
+    .fade-enter {
+        opacity: 0.01;
+    }
+
+    .fade-enter.example-enter-active {
+        opacity: 1;
+        transition: opacity 500ms ease-in;
+    }
+
+    .fade-leave {
+        opacity: 1;
+    }
+
+    .fade-leave.example-leave-active {
+        opacity: 0.01;
+        transition: opacity 300ms ease-in;
+    }
+
+    .contact-button {
+        background-color: darken($green-background, 50%);
+    }
+
+
+    .admin-list {
+        li {
+            display: grid;
+            grid-template-columns: 1fr 3fr repeat(3, 1fr);
+        }
+    }
+
+
+    .call-log-modal{
+        max-width: 80%;
+    }
+
+.call-log {
+    max-height: 70vh;
+    overflow: scroll;
+    overflow-x: auto;
+
+    .list-group-item-heading, .list-group-item {
+        display: grid;
+        grid-template-columns: 2em repeat(4, 1fr);
+        grid-gap: 1em;
+    }
+}
+
+.queue-info-modal {
+
+    @include device(desktop) {
+        max-width: fit-content;
+    }
+}
+
+.change-contact-buttons {
+    display: grid;
+    grid-gap: 1em;
+
+    @include device(desktop) {
+        grid-template-columns: repeat(3, auto);
+        width: fit-content;
+    }
+
+    .large-icon-button {
+        padding: 0.5em 1em;
+        width: 100%;
+    }
+}
+
+.chat-modal {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    bottom: 0;
+    width: auto;
+
+    @include device(desktop) {
+        max-width: 40%;
+    }
+}
+
+.competition {
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.chat-section {
+    /*position: fixed;
+    bottom: 0;
+    width: 50%;
+    right: 0;*/
+    margin-top: 2em;
+    //max-height: 40vh;
+    border: 2px solid #2f6c18;
+    border-radius: 5px;
+    background-color: darkseagreen;
+
+    .messages {
+        max-height: 21vh;
+    }
+}
+
+.video-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
